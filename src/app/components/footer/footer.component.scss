@@ -1,0 +1,42 @@
+@import 'mixins';
+@import 'variables';
+
+.icono {
+    width: 3rem;
+    height: 3rem;
+    filter: invert(100%);
+}
+
+footer {
+    background-color: $negro;
+    height: 100%;
+}
+
+.pie {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color:$blanco;
+    font-size: 1.3rem;
+    margin: 0 1rem;
+    align-items: center;
+}
+
+.pie__redes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pie__iconos {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Responsive del footer */
+@include moviles {
+    .pie {
+        flex-direction: column;
+        align-items: center;
+    }
+}

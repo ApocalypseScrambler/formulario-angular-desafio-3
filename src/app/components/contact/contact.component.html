@@ -1,0 +1,53 @@
+<div class="container">
+  <form [formGroup]="formularioContacto" (ngSubmit)="enviar()">
+    <div class="mb-2">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombre"
+        formControlName="nombre"
+        [ngClass]="{'is-invalid': hasError('nombre', 'required') || hasError('nombre', 'minlength')}"
+      />
+    </div >
+    <div class="text-danger" *ngIf="hasError('nombre', 'required')">Nombre no puede ser vacío</div>
+    <div class="text-danger" *ngIf="hasError('nombre', 'minlength')">Nombre no puede tener menos de 3 caracteres</div>
+    <div>
+      <label for="apellido" class="form-label">Apellido</label>
+      <input
+        type="text"
+        class="form-control"
+        id="apellido"
+        formControlName="apellido"
+        [ngClass]="{'is-invalid': hasError('apellido', 'required') || hasError('apellido', 'minlength')}"
+      />
+    </div>
+    <div class="text-danger" *ngIf="hasError('apellido', 'required')">Apellido no puede ser vacío</div>
+    <div class="text-danger" *ngIf="hasError('apellido', 'minlength')">Apellido no puede tener menos de 3 caracteres</div>
+    <div class="mb-2">
+      <label for="telefono" class="form-label">Teléfono</label>
+      <input
+        type="phone"
+        class="form-control"
+        id="telefono"
+        formControlName="telefono"
+        [ngClass]="{'is-invalid': hasError('telefono', 'required')}"
+      />
+    </div>
+    <div class="text-danger" *ngIf="hasError('telefono', 'required')">Telefóno no puede ser vacío</div>
+    <div class="text-danger" *ngIf="hasError('telefono', 'pattern')">Telefóno formato inválido</div>
+    <div>
+      <label for="email" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        [ngClass]="{'is-invalid': hasError('email', 'required') || hasError('email', 'email')}"
+      />
+    </div>
+    <div class="text-danger" *ngIf="hasError('email', 'email')">Email formato inválido</div>
+    <div class="text-danger" *ngIf="hasError('email', 'required')">Email no puede ser vacío</div>
+    <div class="boton"><button type="submit" class="btn btn-dark">Enviar</button></div>
+  </form>
+</div>
