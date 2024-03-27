@@ -1,24 +1,30 @@
-@import "normalize";
+@import "mixins";
 @import "variables";
-@import "globales";
 
 .grid-central {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
-    height: 100vh;
+    height: 91.6vh;
+}
+
+@include desktop {
+    .grid-central {
+        height: 94.2vh;
+    }
 }
 
 app-footer {
-    grid-area: 5 / 1 / 6 / 6;
+    grid-area: 10 / 1 / 11 / 6;
 }
 app-sidebar {
-    grid-area: 1 / 1 / 5 / 2;
+    grid-area: 1 / 1 / 10 / 2;
 }
+
 app-contact {
-    grid-area: 1 / 2 / 5 / 6;
+    grid-area: 1 / 2 / 10 / 6;
     display: flex;
     align-items: center;
     justify-content: center;

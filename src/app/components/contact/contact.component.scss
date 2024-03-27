@@ -3,6 +3,10 @@
     justify-content: flex-end;
 }
 
+.form-label, .form-control {
+    font-size: 1.5rem;
+}
+
 .text-danger {
     font-size: small;
 }
@@ -10,4 +14,11 @@
 button {
     width: 10rem;
     margin: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.container {
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 1rem;
 }

@@ -31,11 +31,11 @@
         class="form-control"
         id="telefono"
         formControlName="telefono"
-        [ngClass]="{'is-invalid': hasError('telefono', 'required')}"
+        [ngClass]="{'is-invalid': hasError('telefono', 'required') || hasError('telefono', 'pattern')}"
       />
     </div>
     <div class="text-danger" *ngIf="hasError('telefono', 'required')">Telefóno no puede ser vacío</div>
-    <div class="text-danger" *ngIf="hasError('telefono', 'pattern')">Telefóno formato inválido</div>
+    <div class="text-danger" *ngIf="hasError('telefono', 'pattern')">Telefóno formato inválido. Formato válido "1234567890123"</div>
     <div>
       <label for="email" class="form-label">Email</label>
       <input
@@ -46,8 +46,8 @@
         [ngClass]="{'is-invalid': hasError('email', 'required') || hasError('email', 'email')}"
       />
     </div>
-    <div class="text-danger" *ngIf="hasError('email', 'email')">Email formato inválido</div>
     <div class="text-danger" *ngIf="hasError('email', 'required')">Email no puede ser vacío</div>
+    <div class="text-danger" *ngIf="hasError('email', 'email')">Email formato inválido</div>
     <div class="boton"><button type="submit" class="btn btn-dark">Enviar</button></div>
   </form>
 </div>
