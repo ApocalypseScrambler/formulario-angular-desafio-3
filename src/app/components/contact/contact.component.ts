@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { telefonoValidator } from '../../utils/validators';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-contact',
@@ -18,8 +20,16 @@ export class ContactComponent {
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      telefono: ['', [Validators.required, Validators.pattern('[0-9]{13}')]],
+      telefono: ['', [Validators.required, telefonoValidator()]],
     });
+  }
+  
+  telefonoValidator(): boolean {
+    const telefonoControl = this.formularioContacto.get('telefono');
+    if (telefonoControl) {
+      return telefonoValidator()(telefonoControl) !== null;
+    }
+    return false; 
   }
 
   hasError(controlName: string, errorType: string) {
@@ -29,9 +39,17 @@ export class ContactComponent {
 
   enviar() {
     if (this.formularioContacto.valid) {
-      console.log('Envío exitoso');
+      Swal.fire({
+        title: 'Confirmación',
+        text: 'Registro exitoso',
+        icon: 'success',
+      })
     } else {
-      console.log('Formulario inválido');
+      Swal.fire({
+        title: 'Error',
+        text: 'Algunos campos poseen errores.',
+        icon: 'error',
+      })
       this.formularioContacto.markAllAsTouched();
     }
   }
