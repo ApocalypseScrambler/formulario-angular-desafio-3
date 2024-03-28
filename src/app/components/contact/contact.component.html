@@ -47,7 +47,7 @@
       />
     </div>
     <div class="text-danger" *ngIf="hasError('email', 'required')">Email no puede ser vacío</div>
-    <div class="text-danger" *ngIf="hasError('email', 'email')">Email formato inválido</div>
+    <div class="text-danger" *ngIf="hasError('email', 'pattern')">Email formato inválido</div>
     <div class="boton"><button type="submit" class="btn btn-dark">Enviar</button></div>
   </form>
 </div>
